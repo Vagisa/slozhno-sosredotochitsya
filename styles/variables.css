@@ -2,3 +2,39 @@
   Переменные для вашего проекта
   и их переопределение под различные устройства
 */
+
+:root {
+  --bg-color: #000028;
+  --text-color: #F1B2CE;
+  --logo-color: #DB00FF;
+  --accent-color: #FF0070;
+}
+
+.page {
+  color: var(--text-color, #F1B2CE);
+  font-weight: 700;
+  background-color: var(--bg-color, #000028);
+}
+
+.decorated-zone {
+  color: var(--accent-color, #FF0070);
+  font-weight: 400;
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--accent-color, #FF0070);
+}
+
+.cover__header, .footer__title {
+  color: var(--logo-color, #DB00FF);
+  text-shadow: 4px 4px 0 var(--accent-color, #FF0070);
+}
+
+.title-decor {
+  background-color: var(--accent-color, #FF0070);
+  color: var(--bg-color, #000028);
+}
+
+.content__title {
+  color: var(--accent-color, #FF0070);
+}
