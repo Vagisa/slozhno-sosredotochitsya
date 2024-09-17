@@ -5,7 +5,7 @@
 
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
-  min-inline-size: 355px;
+  min-inline-size: 320px;
   margin: 0;
   font-family: var(--main-font, sans-serif);
   font-size: 18px;
@@ -13,7 +13,12 @@
 }
 
 .header, .main, .footer {
-  padding: 0 2.5vi;
+  padding: 0 1rem;
+  text-transform: lowercase;
+}
+
+.header {
+  min-height: 150px;
 }
 
 .decorated-zone {
@@ -41,14 +46,15 @@
 }
 
 .cover {
-  block-size: calc(100vh - 25vi);
-  padding-block-end: 2.5vi;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 150px);
 }
 
 .cover__header, .footer__title {
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  line-height: 95.7px;
-  text-transform: lowercase;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 9.8125rem);
+  line-height: clamp(5.98125rem, 5.7969rem + 0.7883vw, 8.095625rem);
 }
 
 .title-decor {
@@ -56,9 +62,54 @@
 }
 
 .content__item-gallery {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content__item-gallery img {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 376px) {
+  .header, .main, .footer {
+    padding: 0 2.5vi;
+  }
+
+  .content__item-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      "img1 img1 img2"
+      "img3 img4 img2"
+      "img3 img5 img5";
+    gap: 20px;
+  }
+
+  .content__item-gallery img:nth-child(1) { grid-area: img1; }
+  .content__item-gallery img:nth-child(2) { 
+    grid-area: img2; 
+    height: 100%;
+    object-fit: cover;
+  }
+  .content__item-gallery img:nth-child(3) { 
+    grid-area: img3;
+    height: 100%;
+    object-fit: cover;
+  }
+  .content__item-gallery img:nth-child(4) { grid-area: img4; }
+  .content__item-gallery img:nth-child(5) { grid-area: img5; }
 }
 
 .footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   block-size: 100vh;
+}
+
+.footer__title {
+  align-self: center;
 }
